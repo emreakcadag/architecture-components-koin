@@ -1,8 +1,8 @@
 package com.emreakcadag.architecturecomponents.feature.main
 
 import com.emreakcadag.architecturecomponents.feature.main.data.MainApiService
-import com.emreakcadag.architecturecomponents.feature.main.data.repository.MainRemoteDataSource
 import com.emreakcadag.architecturecomponents.feature.main.data.repository.MainRepository
+import com.emreakcadag.architecturecomponents.feature.main.data.repository.remote.MainRemoteDataSource
 import com.emreakcadag.architecturecomponents.feature.main.presentation.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

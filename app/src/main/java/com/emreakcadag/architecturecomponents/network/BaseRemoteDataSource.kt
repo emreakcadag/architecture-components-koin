@@ -3,7 +3,7 @@ package com.emreakcadag.architecturecomponents.network
 import android.util.Log
 import com.emreakcadag.architecturecomponents.BuildConfig
 import com.emreakcadag.architecturecomponents.base.extension.TAG
-import com.google.gson.Gson
+import com.squareup.moshi.Moshi
 import org.koin.core.KoinComponent
 import org.koin.core.get
 import retrofit2.Response
@@ -13,8 +13,6 @@ import java.io.IOException
  * Created by Emre Akçadağ on 6.06.2020
  */
 open class BaseRemoteDataSource : KoinComponent {
-
-    private val gson: Gson = get()
 
     suspend fun <T : Any?> safeApiCall(call: suspend () -> Response<T?>, errorMessage: String): T? {
 
@@ -27,7 +25,7 @@ open class BaseRemoteDataSource : KoinComponent {
         }
 
         if (BuildConfig.DEBUG) {
-            Log.d(TAG, Gson().toJson(data))
+            Log.d(TAG, get<Moshi>().adapter(Any::class.java).toJson(data))
         }
 
         return data

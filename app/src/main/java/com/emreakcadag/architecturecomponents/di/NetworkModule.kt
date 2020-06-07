@@ -1,6 +1,5 @@
 package com.emreakcadag.architecturecomponents.di
 
-import com.google.gson.Gson
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -34,8 +33,6 @@ val networkModule = module {
 
         client.build()
     }
-
-    single { Gson() }
 
     single {
         Moshi.Builder()

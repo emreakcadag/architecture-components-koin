@@ -23,9 +23,13 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
 
-        debug{
-            
+        debug {
+
         }
+    }
+
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -41,6 +45,7 @@ dependencies {
     def roomVersion = "2.2.5"
     def navigationVersion = "2.3.0-beta01"
     def mockitoVersion = "1.5.0"
+    def rxKotlinVersion = "3.0.0"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -57,7 +62,6 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 
     // Moshi
@@ -85,8 +89,12 @@ dependencies {
     // Room
     implementation "androidx.room:room-runtime:$roomVersion"
     annotationProcessor "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // RxKotlin
+    implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlinVersion"
 }

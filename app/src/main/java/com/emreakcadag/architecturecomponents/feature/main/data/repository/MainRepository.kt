@@ -1,5 +1,7 @@
 package com.emreakcadag.architecturecomponents.feature.main.data.repository
 
+import com.emreakcadag.architecturecomponents.feature.main.data.repository.remote.MainRemoteDataSource
+import com.emreakcadag.architecturecomponents.feature.main.data.request.MainRequest
 import com.emreakcadag.architecturecomponents.network.BaseRepository
 import org.koin.core.inject
 
@@ -11,5 +13,5 @@ class MainRepository : BaseRepository() {
 
     private val mainRemoteDataSource: MainRemoteDataSource by inject()
 
-    suspend fun getNasaResponse() = mainRemoteDataSource.getNasaResponse()
+    suspend fun getNasaResponse(mainRequest: MainRequest?) = mainRemoteDataSource.getNasaResponse(mainRequest)
 }

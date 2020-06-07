@@ -1,6 +1,7 @@
 package com.emreakcadag.architecturecomponents.feature.main.data.response
 
 import android.os.Parcelable
+import androidx.room.Entity
 import com.emreakcadag.architecturecomponents.network.BaseNetworkResponse
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
@@ -8,6 +9,7 @@ import kotlinx.android.parcel.Parcelize
 /**
  * Created by Emre Akçadağ on 5.06.2020
  */
+@Entity(tableName = "main_response")
 data class MainResponse(
     val date: String? = null,
     val explanation: String? = null,

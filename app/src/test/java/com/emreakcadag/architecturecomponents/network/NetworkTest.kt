@@ -1,7 +1,6 @@
 package com.emreakcadag.architecturecomponents.network
 
 import com.emreakcadag.architecturecomponents.di.networkModule
-import com.google.gson.Gson
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import org.junit.After
@@ -25,7 +24,6 @@ class NetworkTest : KoinTest {
 
     private val baseUrl: String by lazy { get(named("BASE_URL")) as String }
     private val moshi: Moshi by inject()
-    private val gson: Gson by inject()
     private val retrofit: Retrofit by inject()
     private val okHttpClient: OkHttpClient by inject()
 
@@ -49,11 +47,6 @@ class NetworkTest : KoinTest {
     @Test
     fun `Test Retrofit Created`() {
         assertNotNull(retrofit)
-    }
-
-    @Test
-    fun `Test Gson Created`() {
-        assertNotNull(gson)
     }
 
     @Test

@@ -7,5 +7,6 @@ import com.squareup.moshi.Json
  *
  */
 open class BaseNetworkResponse {
-    @Json(name = "url") var url: String? = null
+    @Json(name = "url")
+    var url: String? = null
 }
