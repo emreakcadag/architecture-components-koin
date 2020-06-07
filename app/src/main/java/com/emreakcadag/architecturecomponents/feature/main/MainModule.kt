@@ -2,6 +2,7 @@ package com.emreakcadag.architecturecomponents.feature.main
 
 import com.emreakcadag.architecturecomponents.feature.main.data.MainApiService
 import com.emreakcadag.architecturecomponents.feature.main.data.repository.MainRepository
+import com.emreakcadag.architecturecomponents.feature.main.data.repository.local.MainLocalDataSource
 import com.emreakcadag.architecturecomponents.feature.main.data.repository.remote.MainRemoteDataSource
 import com.emreakcadag.architecturecomponents.feature.main.presentation.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -18,6 +19,8 @@ val mainModule = module {
     single { MainRepository() }
 
     single { MainRemoteDataSource() }
+
+    single { MainLocalDataSource() }
 
     single {
         get<Retrofit>().create(MainApiService::class.java)

@@ -9,7 +9,6 @@ import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
 
 /**
  * Created by Emre Akçadağ on 5.06.2020
@@ -22,7 +21,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            androidLogger(Level.DEBUG)
+            androidLogger()
             androidContext(this@MyApplication)
             modules(
                 listOf(

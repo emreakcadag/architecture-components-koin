@@ -15,5 +15,5 @@ class MainRemoteDataSource : BaseRemoteDataSource() {
     suspend fun getNasaResponse(mainRequest: MainRequest?) = safeApiCall(
         call = { mainApiService.getNasaResponse(mainRequest?.endPoint) },
         errorMessage = "Error Fetching Main Response"
-    )?.toViewEntity()
+    )
 }

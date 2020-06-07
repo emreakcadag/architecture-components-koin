@@ -14,18 +14,18 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.sendRequest()
+        viewModel.getMainResponseData()
         observeViewModel()
     }
 
     private fun observeViewModel() {
         observeLiveData(viewModel.responseLiveData) {
-            Toast.makeText(this, it.url, Toast.LENGTH_LONG).show()
+            Toast.makeText(this, it?.url, Toast.LENGTH_LONG).show()
 
             binding.imgMain.run {
                 GlideApp
                     .with(this)
-                    .load(it.url)
+                    .load(it?.url)
                     .into(this)
             }
         }

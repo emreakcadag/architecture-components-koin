@@ -2,6 +2,7 @@ package com.emreakcadag.architecturecomponents.feature.main.data.response
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.emreakcadag.architecturecomponents.network.BaseNetworkResponse
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
@@ -15,7 +16,8 @@ data class MainResponse(
     val explanation: String? = null,
     @Json(name = "media_type") val mediaType: String? = null,
     @Json(name = "service_version") val serviceVersion: String? = null,
-    val title: String? = null
+    val title: String? = null,
+    @PrimaryKey(autoGenerate = false) val id: Int = 0
 ) : BaseNetworkResponse() {
 
     /**

@@ -1,5 +1,6 @@
 package com.emreakcadag.architecturecomponents.feature.main.data.repository
 
+import com.emreakcadag.architecturecomponents.feature.main.data.repository.local.MainLocalDataSource
 import com.emreakcadag.architecturecomponents.feature.main.data.repository.remote.MainRemoteDataSource
 import com.emreakcadag.architecturecomponents.feature.main.data.request.MainRequest
 import com.emreakcadag.architecturecomponents.network.BaseRepository
@@ -13,5 +14,18 @@ class MainRepository : BaseRepository() {
 
     private val mainRemoteDataSource: MainRemoteDataSource by inject()
 
-    suspend fun getNasaResponse(mainRequest: MainRequest?) = mainRemoteDataSource.getNasaResponse(mainRequest)
+    private val mainLocalDataSource: MainLocalDataSource by inject()
+
+    suspend fun getNasaResponse(mainRequest: MainRequest?) = mainRequest?.run {
+        mainRemoteDataSource.getNasaResponse(this)?.also {
+
+            // cache response
+            mainLocalDataSource.cacheNasaResponse(it)
+        }
+    }
+
+    /*
+     * getLocalNasaResponse
+     */
+    suspend fun getLocalNasaResponse(mainRequest: MainRequest?) = mainLocalDataSource.getLocalNasaResponse(mainRequest)
 }

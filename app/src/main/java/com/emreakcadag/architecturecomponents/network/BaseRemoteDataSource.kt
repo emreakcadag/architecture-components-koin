@@ -1,11 +1,8 @@
 package com.emreakcadag.architecturecomponents.network
 
-import android.util.Log
-import com.emreakcadag.architecturecomponents.BuildConfig
-import com.emreakcadag.architecturecomponents.base.extension.TAG
-import com.squareup.moshi.Moshi
+import com.emreakcadag.architecturecomponents.base.extension.logDebug
+import com.emreakcadag.architecturecomponents.base.extension.toJson
 import org.koin.core.KoinComponent
-import org.koin.core.get
 import retrofit2.Response
 import java.io.IOException
 
@@ -21,12 +18,10 @@ open class BaseRemoteDataSource : KoinComponent {
 
         when (result) {
             is BaseResult.Success -> data = result.data
-            is BaseResult.Error -> Log.d("1.DataRepository", "$errorMessage & Exception - ${result.exception}")
+            is BaseResult.Error -> logDebug("$errorMessage & Exception - ${result.exception}")
         }
 
-        if (BuildConfig.DEBUG) {
-            Log.d(TAG, get<Moshi>().adapter(Any::class.java).toJson(data))
-        }
+        logDebug(data.toJson())
 
         return data
     }

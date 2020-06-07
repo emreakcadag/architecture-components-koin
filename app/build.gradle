@@ -28,6 +28,10 @@ android {
         }
     }
 
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+
     dataBinding {
         enabled = true
     }
@@ -46,6 +50,7 @@ dependencies {
     def navigationVersion = "2.3.0-beta01"
     def mockitoVersion = "1.5.0"
     def rxKotlinVersion = "3.0.0"
+    def materialVersion = "1.1.0"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -88,8 +93,9 @@ dependencies {
 
     // Room
     implementation "androidx.room:room-runtime:$roomVersion"
-    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion" // @PrimaryKey -> kapt else annotationProcessor
     implementation "androidx.room:room-ktx:$roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$roomVersion"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -97,4 +103,7 @@ dependencies {
 
     // RxKotlin
     implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlinVersion"
+
+    // Material design
+    implementation "com.google.android.material:material:$materialVersion"
 }

@@ -1,10 +1,10 @@
 package com.emreakcadag.architecturecomponents.feature.main.presentation
 
-import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.emreakcadag.architecturecomponents.base.BaseViewModel
+import com.emreakcadag.architecturecomponents.base.extension.logDebug
 import com.emreakcadag.architecturecomponents.feature.main.data.repository.MainRepository
 import com.emreakcadag.architecturecomponents.feature.main.data.request.MainRequest
 import com.emreakcadag.architecturecomponents.feature.main.data.response.MainResponse
@@ -18,21 +18,29 @@ class MainViewModel : BaseViewModel() {
 
     private val mainRepository: MainRepository by inject()
 
-    private val response = MutableLiveData<MainResponse.ViewEntity>()
-    val responseLiveData: LiveData<MainResponse.ViewEntity> get() = response
+    private val request = MainRequest()
+
+    private val response = MutableLiveData<MainResponse?>()
+    val responseLiveData: LiveData<MainResponse?> get() = response
 
     val helloWorldObservable = ObservableField("Emre")
 
-    fun sendRequest() {
-        scope.launch {
-            try {
+    fun getMainResponseData() {
 
-                val request = MainRequest()
-                val res = mainRepository.getNasaResponse(request)
-                response.postValue(res)
+        scope.launch {
+
+            mainRepository.getLocalNasaResponse(request)?.also {
+                response.postValue(it)
+            }
+
+            try {
+                val remoteRes = mainRepository.getNasaResponse(request)
+                if (response.value != remoteRes) {
+                    response.postValue(remoteRes)
+                }
                 helloWorldObservable.set("HelloWorld")
             } catch (e: Exception) {
-                Log.d("EMREE", e.toString())
+                this@MainViewModel.logDebug("$e")
             }
         }
     }
