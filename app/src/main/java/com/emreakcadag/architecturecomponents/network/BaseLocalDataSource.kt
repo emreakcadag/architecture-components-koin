@@ -12,11 +12,11 @@ import java.io.IOException
  */
 open class BaseLocalDataSource : KoinComponent {
 
-    val room = AppDatabase.getDatabase(get())
+    open val database = AppDatabase.getDatabase(get())
 
     suspend fun <T : Any?> safeLocalApiCall(call: suspend () -> T?, errorMessage: String): T? {
 
-        val result: BaseResult<T?> = safeLocalApiResult(call, errorMessage)
+        val result = safeLocalApiResult(call, errorMessage)
         var data: T? = null
 
         when (result) {

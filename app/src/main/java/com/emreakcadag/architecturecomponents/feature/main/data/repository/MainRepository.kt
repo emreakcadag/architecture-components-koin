@@ -19,7 +19,7 @@ class MainRepository : BaseRepository() {
     suspend fun getNasaResponse(mainRequest: MainRequest?) = mainRequest?.run {
         mainRemoteDataSource.getNasaResponse(this)?.also {
 
-            // cache response
+            // cache response to local room database
             mainLocalDataSource.cacheNasaResponse(it)
         }
     }
@@ -27,5 +27,6 @@ class MainRepository : BaseRepository() {
     /*
      * getLocalNasaResponse
      */
-    suspend fun getLocalNasaResponse(mainRequest: MainRequest?) = mainLocalDataSource.getLocalNasaResponse(mainRequest)
+    suspend fun getLocalNasaResponse(mainRequest: MainRequest?) =
+        mainLocalDataSource.getLocalNasaResponse(mainRequest)
 }

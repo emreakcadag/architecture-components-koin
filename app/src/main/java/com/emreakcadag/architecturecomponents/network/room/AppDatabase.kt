@@ -16,8 +16,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun mainResponseDao(): MainResponseDao
 
     companion object {
-        // Singleton prevents multiple instances of database opening at the
-        // same time.
+        private const val DB_NAME = "app_database"
+
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
@@ -30,7 +30,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "main_response"
+                    DB_NAME
                 ).build()
                 INSTANCE = instance
                 return instance

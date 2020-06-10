@@ -16,8 +16,7 @@ open class BaseViewModel : ViewModel(), KoinComponent {
 
     private val parentJob = Job()
 
-    private val coroutineContext: CoroutineContext
-        get() = parentJob + Dispatchers.Default
+    private val coroutineContext: CoroutineContext = parentJob + Dispatchers.Default
 
     protected val scope = CoroutineScope(coroutineContext)
 

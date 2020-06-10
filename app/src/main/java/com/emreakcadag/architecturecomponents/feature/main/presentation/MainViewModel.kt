@@ -38,7 +38,7 @@ class MainViewModel : BaseViewModel() {
                 if (response.value != remoteRes) {
                     response.postValue(remoteRes)
                 }
-                helloWorldObservable.set("HelloWorld")
+                helloWorldObservable.set("onRemoteResponse")
             } catch (e: Exception) {
                 this@MainViewModel.logDebug("$e")
             }

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
+import com.emreakcadag.architecturecomponents.base.extension.logDebug
 import java.util.*
 
 /**
@@ -11,12 +12,11 @@ import java.util.*
  *
  * Since many have to implement this, then create a default class
  */
-interface CurrentActivityListener {
+private interface CurrentActivityListener {
     val currentActivity: Activity?
 }
 
-class DefaultCurrentActivityListener : Application.ActivityLifecycleCallbacks,
-    CurrentActivityListener {
+class DefaultCurrentActivityListener : Application.ActivityLifecycleCallbacks, CurrentActivityListener {
 
     override var currentActivity: Activity? = null
     lateinit var context: Context
@@ -26,6 +26,8 @@ class DefaultCurrentActivityListener : Application.ActivityLifecycleCallbacks,
         currentActivity = activity
         context = activity
         currentActivityStack.add(activity)
+
+        logDebug("${activity::class.simpleName} onActivityCreated")
     }
 
     /*
@@ -66,6 +68,7 @@ class DefaultCurrentActivityListener : Application.ActivityLifecycleCallbacks,
         if (activity == currentActivity) {
             currentActivity = null
         }
+        logDebug("${activity::class.simpleName} onActivityDestroyed")
         currentActivityStack.remove(activity)
     }
 }
