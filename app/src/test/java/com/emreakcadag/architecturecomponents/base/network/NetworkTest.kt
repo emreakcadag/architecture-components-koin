@@ -1,4 +1,4 @@
-package com.emreakcadag.architecturecomponents.network
+package com.emreakcadag.architecturecomponents.base.network
 
 import com.emreakcadag.architecturecomponents.di.networkModule
 import com.squareup.moshi.Moshi

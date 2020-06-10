@@ -2,7 +2,7 @@ package com.emreakcadag.architecturecomponents.feature.main.data.repository.loca
 
 import com.emreakcadag.architecturecomponents.feature.main.data.request.MainRequest
 import com.emreakcadag.architecturecomponents.feature.main.data.response.MainResponse
-import com.emreakcadag.architecturecomponents.network.BaseLocalDataSource
+import com.emreakcadag.architecturecomponents.base.network.BaseLocalDataSource
 
 /**
  * Created by Emre Akçadağ on 7.06.2020

@@ -3,7 +3,7 @@ package com.emreakcadag.architecturecomponents.feature.main.data.response
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.emreakcadag.architecturecomponents.network.BaseResponse
+import com.emreakcadag.architecturecomponents.base.network.BaseResponse
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 

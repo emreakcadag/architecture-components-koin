@@ -1,4 +1,4 @@
-package com.emreakcadag.architecturecomponents.network
+package com.emreakcadag.architecturecomponents.base.network
 
 /**
  * Created by Emre Akçadağ on 6.06.2020

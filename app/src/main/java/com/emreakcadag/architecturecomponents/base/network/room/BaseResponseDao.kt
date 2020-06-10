@@ -1,4 +1,4 @@
-package com.emreakcadag.architecturecomponents.network.room
+package com.emreakcadag.architecturecomponents.base.network.room
 
 import androidx.room.Dao
 

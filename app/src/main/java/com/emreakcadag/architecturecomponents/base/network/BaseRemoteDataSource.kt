@@ -1,4 +1,4 @@
-package com.emreakcadag.architecturecomponents.network
+package com.emreakcadag.architecturecomponents.base.network
 
 import com.emreakcadag.architecturecomponents.base.extension.logDebug
 import com.emreakcadag.architecturecomponents.base.extension.toJson

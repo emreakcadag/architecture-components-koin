@@ -1,8 +1,8 @@
-package com.emreakcadag.architecturecomponents.network
+package com.emreakcadag.architecturecomponents.base.network
 
 import com.emreakcadag.architecturecomponents.base.extension.logDebug
 import com.emreakcadag.architecturecomponents.base.extension.toJson
-import com.emreakcadag.architecturecomponents.network.room.AppDatabase
+import com.emreakcadag.architecturecomponents.base.network.room.AppDatabase
 import org.koin.core.KoinComponent
 import org.koin.core.get
 import java.io.IOException

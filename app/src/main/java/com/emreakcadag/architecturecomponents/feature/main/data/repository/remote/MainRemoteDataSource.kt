@@ -2,7 +2,7 @@ package com.emreakcadag.architecturecomponents.feature.main.data.repository.remo
 
 import com.emreakcadag.architecturecomponents.feature.main.data.MainApiService
 import com.emreakcadag.architecturecomponents.feature.main.data.request.MainRequest
-import com.emreakcadag.architecturecomponents.network.BaseRemoteDataSource
+import com.emreakcadag.architecturecomponents.base.network.BaseRemoteDataSource
 import org.koin.core.inject
 
 /**
