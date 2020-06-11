@@ -9,7 +9,7 @@ import org.koin.core.inject
  */
 class AppSession : KoinComponent {
 
-    val moshi: Moshi? by inject()
+    val moshi: Moshi by inject()
 
     companion object {
 

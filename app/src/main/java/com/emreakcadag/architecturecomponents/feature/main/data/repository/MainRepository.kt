@@ -1,9 +1,9 @@
 package com.emreakcadag.architecturecomponents.feature.main.data.repository
 
+import com.emreakcadag.architecturecomponents.base.network.BaseRepository
 import com.emreakcadag.architecturecomponents.feature.main.data.repository.local.MainLocalDataSource
 import com.emreakcadag.architecturecomponents.feature.main.data.repository.remote.MainRemoteDataSource
 import com.emreakcadag.architecturecomponents.feature.main.data.request.MainRequest
-import com.emreakcadag.architecturecomponents.base.network.BaseRepository
 import org.koin.core.inject
 
 /**

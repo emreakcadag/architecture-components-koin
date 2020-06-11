@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.emreakcadag.architecturecomponents.feature.main.data.repository.local.MainResponseDao
 import com.emreakcadag.architecturecomponents.feature.main.data.response.MainResponse
 
@@ -11,6 +12,7 @@ import com.emreakcadag.architecturecomponents.feature.main.data.response.MainRes
  * Created by Emre Akçadağ on 7.06.2020
  */
 @Database(entities = [MainResponse::class], version = 1)
+@TypeConverters(AppTypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun mainResponseDao(): MainResponseDao

@@ -1,8 +1,8 @@
 package com.emreakcadag.architecturecomponents.feature.main.data.repository.local
 
 import androidx.room.*
-import com.emreakcadag.architecturecomponents.feature.main.data.response.MainResponse
 import com.emreakcadag.architecturecomponents.base.network.room.BaseResponseDao
+import com.emreakcadag.architecturecomponents.feature.main.data.response.MainResponse
 
 /**
  * Created by Emre Akçadağ on 7.06.2020

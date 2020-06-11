@@ -17,7 +17,8 @@ import java.util.concurrent.TimeUnit
 val networkModule = module {
 
     // https://api.nasa.gov/planetary/apod?api_key=SzVivPLHN7PCYZKtD3PupYZWeKPGTVS0Tx9F2VNh
-    single(named("BASE_URL")) { "https://api.nasa.gov/planetary/" }
+    // http://192.168.1.102:3000/
+    single(named("BASE_URL")) { "http://192.168.1.102:3000/" }
 
     single {
         val interceptor = HttpLoggingInterceptor.Level.BODY

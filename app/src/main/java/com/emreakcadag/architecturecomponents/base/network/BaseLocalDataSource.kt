@@ -30,7 +30,11 @@ open class BaseLocalDataSource : KoinComponent {
     }
 
     private suspend fun <T : Any?> safeLocalApiResult(call: suspend () -> T?, errorMessage: String): BaseResult<T?> {
-        val response = call.invoke()
+        var response: T? = null
+        try {
+            response = call.invoke()
+        } catch (e: Exception) {
+        }
         if (response != null) return BaseResult.Success(response)
 
         return BaseResult.Error(IOException("Error Occurred during getting safe LOCAL Api result, Custom ERROR - $errorMessage"))

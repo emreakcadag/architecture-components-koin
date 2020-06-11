@@ -1,5 +1,6 @@
 package com.emreakcadag.architecturecomponents.base.network
 
+import androidx.room.Embedded
 import com.emreakcadag.architecturecomponents.base.model.DialogBox
 import com.squareup.moshi.Json
 
@@ -12,6 +13,6 @@ open class BaseResponse {
     var url: String? = null
 
     @Json(name = "dialogBox")
-    @Transient
+    @Embedded(prefix = "dialogBox")
     var dialogBox: DialogBox? = null
 }

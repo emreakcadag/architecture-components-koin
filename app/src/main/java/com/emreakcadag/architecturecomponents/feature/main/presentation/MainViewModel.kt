@@ -18,7 +18,7 @@ class MainViewModel : BaseViewModel() {
 
     private val mainRepository: MainRepository by inject()
 
-    private val request = MainRequest()
+    private val request = MainRequest(showDialog = true)
 
     private val response = MutableLiveData<MainResponse?>()
     val responseLiveData: LiveData<MainResponse?> get() = response

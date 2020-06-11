@@ -1,5 +1,6 @@
 package com.emreakcadag.architecturecomponents.di
 
+import com.emreakcadag.architecturecomponents.base.DialogBoxHandler
 import com.emreakcadag.architecturecomponents.base.applicationlistener.ActivityRetriever
 import com.emreakcadag.architecturecomponents.base.applicationlistener.DefaultCurrentActivityListener
 import org.koin.dsl.module
@@ -10,10 +11,14 @@ import org.koin.dsl.module
  */
 
 val appModule = module {
+
     single { DefaultCurrentActivityListener() }
+
     single {
         ActivityRetriever(
             get()
         )
     }
+
+    single { DialogBoxHandler() }
 }
