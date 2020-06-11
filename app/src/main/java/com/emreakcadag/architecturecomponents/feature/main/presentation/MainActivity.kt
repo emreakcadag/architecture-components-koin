@@ -1,15 +1,19 @@
 package com.emreakcadag.architecturecomponents.feature.main.presentation
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import com.emreakcadag.architecturecomponents.R
 import com.emreakcadag.architecturecomponents.base.BaseActivity
-import com.emreakcadag.architecturecomponents.base.GlideApp
 import com.emreakcadag.architecturecomponents.base.extension.observeLiveData
 import com.emreakcadag.architecturecomponents.databinding.ActivityMainBinding
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.activity_main) {
+
+    companion object {
+        fun newIntent(context: Context) = Intent(context, MainActivity::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,16 +23,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
     }
 
     private fun observeViewModel() {
-        observeLiveData(viewModel.responseLiveData) {
-            Toast.makeText(this, it?.url, Toast.LENGTH_LONG).show()
-
-            binding.imgMain.run {
-                GlideApp
-                    .with(this)
-                    .load(it?.url)
-                    .into(this)
-            }
-        }
+        observeLiveData(viewModel.responseLiveData) {}
     }
 
     override fun provideViewModel() = getViewModel<MainViewModel>()

@@ -20,28 +20,35 @@ class MainViewModel : BaseViewModel() {
 
     private val request = MainRequest(showDialog = true)
 
-    private val response = MutableLiveData<MainResponse?>()
-    val responseLiveData: LiveData<MainResponse?> get() = response
+    private val responseData = MutableLiveData<MainResponse?>()
+    val responseLiveData: LiveData<MainResponse?> get() = responseData
 
     val helloWorldObservable = ObservableField("Emre")
+    val imageResourceObservable = ObservableField<Any?>()
 
     fun getMainResponseData() {
 
         scope.launch {
 
             mainRepository.getLocalNasaResponse(request)?.also {
-                response.postValue(it)
+                handleData(it)
             }
 
             try {
-                val remoteRes = mainRepository.getNasaResponse(request)
-                if (response.value != remoteRes) {
-                    response.postValue(remoteRes)
+                mainRepository.getNasaResponse(request)?.also {
+                    handleData(it)
                 }
                 helloWorldObservable.set("onRemoteResponse")
             } catch (e: Exception) {
                 this@MainViewModel.logDebug("$e")
             }
+        }
+    }
+
+    private fun handleData(response: MainResponse?) {
+        if (responseData.value != response) {
+            responseData.postValue(response)
+            imageResourceObservable.set(response?.url)
         }
     }
 }

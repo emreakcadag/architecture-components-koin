@@ -5,7 +5,6 @@ import com.emreakcadag.architecturecomponents.base.extension.dialogBoxChecker
 import com.emreakcadag.architecturecomponents.base.extension.logDebug
 import com.emreakcadag.architecturecomponents.base.extension.toJson
 import org.koin.core.KoinComponent
-import org.koin.core.inject
 import retrofit2.Response
 import java.io.IOException
 
@@ -13,8 +12,6 @@ import java.io.IOException
  * Created by Emre Akçadağ on 6.06.2020
  */
 open class BaseRemoteDataSource : KoinComponent {
-
-    private val dialogBoxHandler: DialogBoxHandler by inject()
 
     suspend fun <T : Any?> safeApiCall(call: suspend () -> Response<T?>, errorMessage: String): T? {
 
@@ -30,7 +27,7 @@ open class BaseRemoteDataSource : KoinComponent {
 
         // Gelen response'e bakar [DialogBox] varsa DialogBoxHandler ile DialogBox gösterilir.
         if (dialogBoxChecker(data)) {
-            dialogBoxHandler.showDialogBox((data as? BaseResponse?)?.dialogBox)
+            DialogBoxHandler.instance.showDialogBox((data as? BaseResponse?)?.dialogBox)
         }
 
         return data
