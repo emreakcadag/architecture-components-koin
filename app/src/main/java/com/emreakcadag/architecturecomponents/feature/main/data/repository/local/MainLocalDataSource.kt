@@ -1,7 +1,6 @@
 package com.emreakcadag.architecturecomponents.feature.main.data.repository.local
 
 import com.emreakcadag.architecturecomponents.base.network.BaseLocalDataSource
-import com.emreakcadag.architecturecomponents.feature.main.data.request.MainRequest
 import com.emreakcadag.architecturecomponents.feature.main.data.response.MainResponse
 
 /**
@@ -10,12 +9,12 @@ import com.emreakcadag.architecturecomponents.feature.main.data.response.MainRes
 class MainLocalDataSource : BaseLocalDataSource() {
 
     suspend fun getLocalNasaResponse() = safeLocalApiCall(
-        call = { database.mainResponseDao().getOne() },
+        call = { appDatabase.mainResponseDao().getOne() },
         errorMessage = "Error Fetching Main LOCAL Response"
     )
 
     /*
      * cache response with room
      */
-    fun cacheNasaResponse(nasaResponse: MainResponse?) = database.mainResponseDao().insertAll(nasaResponse)
+    fun cacheNasaResponse(nasaResponse: MainResponse?) = appDatabase.mainResponseDao().insertAll(nasaResponse)
 }

@@ -1,5 +1,6 @@
 package com.emreakcadag.architecturecomponents.di
 
+import com.emreakcadag.architecturecomponents.base.network.room.AppDatabase
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -31,6 +32,10 @@ val networkModule = module {
             .writeTimeout(30, TimeUnit.SECONDS)
 
         client.build()
+    }
+
+    single {
+        AppDatabase.getDatabase(get())
     }
 
     single {

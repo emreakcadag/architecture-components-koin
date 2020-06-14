@@ -15,7 +15,7 @@ import com.emreakcadag.architecturecomponents.base.GlideApp
 ])
 object BindingAdapters*/
 
-@BindingAdapter("app:imageResource")
+@BindingAdapter("android:imageResource")
 fun ImageView.setImageResource(resource: Any?) {
     when (resource) {
         is String -> GlideApp.with(this).load(resource).into(this)
@@ -28,7 +28,7 @@ fun ImageView.setImageResource(resource: Any?) {
 fun View.setVisibility(value: Any?) {
     this.visibility = when {
         value is List<*> && value.isNotEmpty() -> View.VISIBLE
-        value is String && value.isNotBlank() -> View.VISIBLE
+        value is String && value.isNotEmpty() -> View.VISIBLE
         value is Boolean && value -> View.VISIBLE
         value is Int && (value == View.VISIBLE || value == View.INVISIBLE || value == View.GONE) -> value
         else -> View.GONE

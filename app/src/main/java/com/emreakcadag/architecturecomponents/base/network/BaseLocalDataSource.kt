@@ -4,7 +4,7 @@ import com.emreakcadag.architecturecomponents.base.extension.logDebug
 import com.emreakcadag.architecturecomponents.base.extension.toJson
 import com.emreakcadag.architecturecomponents.base.network.room.AppDatabase
 import org.koin.core.KoinComponent
-import org.koin.core.get
+import org.koin.core.inject
 import java.io.IOException
 
 /**
@@ -12,7 +12,7 @@ import java.io.IOException
  */
 open class BaseLocalDataSource : KoinComponent {
 
-    open val database = AppDatabase.getDatabase(get())
+    open val appDatabase: AppDatabase by inject()
 
     suspend fun <T : Any?> safeLocalApiCall(call: suspend () -> T?, errorMessage: String): T? {
 
@@ -35,6 +35,7 @@ open class BaseLocalDataSource : KoinComponent {
             response = call.invoke()
         } catch (e: Exception) {
         }
+
         if (response != null) return BaseResult.Success(response)
 
         return BaseResult.Error(IOException("Error Occurred during getting safe LOCAL Api result, Custom ERROR - $errorMessage"))

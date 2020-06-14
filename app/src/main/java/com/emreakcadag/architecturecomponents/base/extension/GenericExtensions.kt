@@ -14,7 +14,7 @@ import com.emreakcadag.architecturecomponents.base.network.BaseResponse
  */
 
 /**
- * Get tag for all class
+ * Get tag for all classes
  */
 inline val <reified T> T.TAG: String get() = T::class.java.simpleName
 
