@@ -9,7 +9,7 @@ import com.emreakcadag.architecturecomponents.feature.main.data.response.MainRes
  */
 class MainLocalDataSource : BaseLocalDataSource() {
 
-    suspend fun getLocalNasaResponse(mainRequest: MainRequest?) = safeLocalApiCall(
+    suspend fun getLocalNasaResponse() = safeLocalApiCall(
         call = { database.mainResponseDao().getOne() },
         errorMessage = "Error Fetching Main LOCAL Response"
     )

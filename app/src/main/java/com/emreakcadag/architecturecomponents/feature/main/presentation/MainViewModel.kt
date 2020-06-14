@@ -31,7 +31,7 @@ class MainViewModel : BaseViewModel() {
         scope.launch {
 
             try {
-                mainRepository.getLocalNasaResponse(request)?.also {
+                mainRepository.getLocalNasaResponse()?.also {
                     handleData(it)
                 }
             } catch (e: Exception) {

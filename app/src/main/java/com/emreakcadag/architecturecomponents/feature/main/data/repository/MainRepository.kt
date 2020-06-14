@@ -27,6 +27,5 @@ class MainRepository : BaseRepository() {
     /*
      * getLocalNasaResponse
      */
-    suspend fun getLocalNasaResponse(mainRequest: MainRequest?) =
-        mainLocalDataSource.getLocalNasaResponse(mainRequest)
+    suspend fun getLocalNasaResponse() = mainLocalDataSource.getLocalNasaResponse()
 }
