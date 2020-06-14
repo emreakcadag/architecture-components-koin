@@ -30,8 +30,12 @@ class MainViewModel : BaseViewModel() {
 
         scope.launch {
 
-            mainRepository.getLocalNasaResponse(request)?.also {
-                handleData(it)
+            try {
+                mainRepository.getLocalNasaResponse(request)?.also {
+                    handleData(it)
+                }
+            } catch (e: Exception) {
+                this@MainViewModel.logDebug("$e")
             }
 
             try {

@@ -22,10 +22,11 @@ class DialogBoxHandler : KoinComponent {
             builder?.apply {
                 setMessage(dialogBox?.description)
                 setTitle(dialogBox?.title)
-                setPositiveButton("Ok") { dialog, id ->
+
+                setPositiveButton(dialogBox?.buttonList?.getOrNull(0)?.text) { dialog, id ->
                     dialog.dismiss()
                 }
-                setNegativeButton("Cancel") { dialog, id ->
+                setNegativeButton(dialogBox?.buttonList?.getOrNull(1)?.text) { dialog, id ->
                     dialog.cancel()
                 }
 

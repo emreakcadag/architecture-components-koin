@@ -1,6 +1,6 @@
 package com.emreakcadag.architecturecomponents.base
 
-import com.squareup.moshi.Moshi
+import com.google.gson.Gson
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -9,7 +9,7 @@ import org.koin.core.inject
  */
 class AppSession : KoinComponent {
 
-    val moshi: Moshi by inject()
+    val gson: Gson by inject()
 
     companion object {
 

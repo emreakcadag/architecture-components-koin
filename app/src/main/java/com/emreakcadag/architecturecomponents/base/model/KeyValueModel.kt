@@ -1,7 +1,7 @@
 package com.emreakcadag.architecturecomponents.base.model
 
 import android.os.Parcelable
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
@@ -9,10 +9,10 @@ import kotlinx.android.parcel.RawValue
  * Created by Emre Akçadağ on 7.06.2020
  */
 data class KeyValueModel<Key : Any?, Value : Any?>(
-    @Json(name = "key")
+    @SerializedName("key")
     val key: @RawValue Key?,
 
-    @Json(name = "value")
+    @SerializedName("value")
     val value: @RawValue Value?
 ) {
 

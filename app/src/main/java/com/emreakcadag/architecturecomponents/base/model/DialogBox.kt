@@ -7,5 +7,5 @@ data class DialogBox(
     var title: String? = null,
     var description: String? = null,
     val isCancelable: Boolean? = null,
-    var buttonList: List<String?>? = null // TODO emreakcadag ButtonModel oluştur, Action, type, theme etc., val isCancellable: kotlin.Boolean){}
+    var buttonList: List<ButtonModel>? = null
 )

@@ -1,13 +1,12 @@
 package com.emreakcadag.architecturecomponents.di
 
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
@@ -31,19 +30,20 @@ val networkModule = module {
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
 
-
         client.build()
     }
 
     single {
-        Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
+        Gson()
+            .newBuilder()
+            .setPrettyPrinting()
+            .disableHtmlEscaping()
+            .create()
     }
 
     single {
         Retrofit.Builder().baseUrl(get<String>(named("BASE_URL")))
-            .addConverterFactory(MoshiConverterFactory.create(get()))
+            .addConverterFactory(GsonConverterFactory.create(get()))
             .client(get())
             .build()
     }

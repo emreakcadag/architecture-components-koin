@@ -48,14 +48,14 @@ fun <Key, Value> List<KeyValueModel.ViewEntity<Key, Value>>?.findValueByKey(key:
  * Any object to json string
  */
 fun Any?.toJson() = this?.run {
-    AppSession.instance.moshi.adapter(Any::class.java).toJson(this@toJson)
+    AppSession.instance.gson.toJson(this@toJson)
 }
 
 /*
  * Json string to reified object
  */
 inline fun <reified T : Any?> String?.fromJson() = this?.run {
-    AppSession.instance.moshi.adapter(T::class.java).fromJson(this@fromJson)
+    AppSession.instance.gson.fromJson(this@fromJson, T::class.java)
 }
 
 /*

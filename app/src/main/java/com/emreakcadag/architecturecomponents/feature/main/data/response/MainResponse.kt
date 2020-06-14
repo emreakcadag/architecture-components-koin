@@ -4,7 +4,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.emreakcadag.architecturecomponents.base.network.BaseResponse
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -14,10 +14,10 @@ import kotlinx.android.parcel.Parcelize
 data class MainResponse(
     val date: String? = null,
     val explanation: String? = null,
-    @Json(name = "media_type") val mediaType: String? = null,
-    @Json(name = "service_version") val serviceVersion: String? = null,
+    @SerializedName("media_type") val mediaType: String? = null,
+    @SerializedName("service_version") val serviceVersion: String? = null,
     val title: String? = null,
-    @PrimaryKey(autoGenerate = false) val id: Int = 0
+    @PrimaryKey val id: Int = 0
 ) : BaseResponse() {
 
     /**
