@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.emreakcadag.architecturecomponents"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -55,6 +55,7 @@ dependencies {
     def mockitoVersion = "1.5.0"
     def rxKotlinVersion = "3.0.0"
     def materialVersion = "1.1.0"
+    def exoPlayerVersion = "2.8.3"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

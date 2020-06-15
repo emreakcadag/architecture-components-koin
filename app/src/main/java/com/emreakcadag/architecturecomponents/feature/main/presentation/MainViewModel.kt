@@ -24,7 +24,7 @@ class MainViewModel : BaseViewModel() {
     val responseLiveData: LiveData<MainResponse?> get() = responseData
 
     val helloWorldObservable = ObservableField("Emre")
-    val imageResourceObservable = ObservableField<Any?>()
+    val mediaResourceObservable = ObservableField<Any?>()
 
     fun getMainResponseData() {
 
@@ -52,7 +52,7 @@ class MainViewModel : BaseViewModel() {
     private fun handleData(response: MainResponse?) {
         if (responseData.value != response) {
             responseData.postValue(response)
-            imageResourceObservable.set(response?.url)
+            mediaResourceObservable.set(response?.url)
         }
     }
 }
